@@ -1,1 +1,2 @@
 # RandomChords
+Generate random chords.
