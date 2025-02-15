@@ -32,13 +32,13 @@ Dissonances=0
 repeats=0
 firstchord=0
 clashlist=["CC#","C#D","DD#","D#E","EF","FF#","F#G","GG#","G#A","AA#","A#B","BC"]
-steps=[[0, 2, 4, 5, 7, 9, 11, 0], [0, 2, 3, 5, 7, 9, 10, 0], [0, 1, 3, 5, 7, 8, 10, 0], [0, 2, 4, 6, 7, 9, 11, 0], [0, 2, 4, 5, 7, 9, 10, 0], [0, 2, 3, 5, 7, 8, 10, 0], [0, 1, 3, 5, 6, 8, 10, 0], [0, 2, 3, 5, 7, 9, 11, 0], [0, 1, 3, 5, 7, 9, 10, 0], [0, 2, 4, 6, 8, 9, 11, 0], [0, 2, 4, 6, 0, 9, 10, 0], [0, 2, 4, 5, 7, 8, 10, 0], [0, 2, 3, 5, 6, 8, 10, 0], [0, 1, 3, 4, 6, 8, 10, 0], [0, 2, 3, 5, 7, 8, 11, 0], [0, 2, 4, 6, 8, 10, 0], [0, 2, 3, 5, 6, 7, 8, 10, 0], [0, 2, 3, 5, 6, 8, 9, 11, 0], [0, 2, 3, 5, 6, 8, 9, 10, 0], [0, 1, 3, 4, 6, 7, 9, 10, 0], [0, 3, 5, 7, 10, 0], [0, 2, 4, 7, 9, 0], [0, 3, 5, 6, 7, 10, 0], [0, 2, 3, 4, 5, 7, 9, 10, 11, 0], [0, 2, 4, 5, 7, 8, 9, 11, 0], [0, 2, 3, 5, 7, 8, 10, 11, 0], [0, 2, 4, 5, 7, 9, 10, 11, 0]]
+steps=[[0, 2, 4, 5, 7, 9, 11, 0], [0, 2, 3, 5, 7, 9, 10, 0], [0, 1, 3, 5, 7, 8, 10, 0], [0, 2, 4, 6, 7, 9, 11, 0], [0, 2, 4, 5, 7, 9, 10, 0], [0, 2, 3, 5, 7, 8, 10, 0], [0, 1, 3, 5, 6, 8, 10, 0], [0, 2, 3, 5, 7, 9, 11, 0], [0, 1, 3, 5, 7, 9, 10, 0], [0, 2, 4, 6, 8, 9, 11, 0], [0, 2, 4, 6, 7, 9, 10, 0], [0, 2, 4, 5, 7, 8, 10, 0], [0, 2, 3, 5, 6, 8, 10, 0], [0, 1, 3, 4, 6, 8, 10, 0], [0, 2, 3, 5, 7, 8, 11, 0], [0, 2, 4, 6, 8, 10, 0], [0, 2, 3, 5, 6, 7, 8, 10, 0], [0, 2, 3, 5, 6, 8, 9, 11, 0], [0, 2, 3, 5, 6, 8, 9, 10, 0], [0, 1, 3, 4, 6, 7, 9, 10, 0], [0, 3, 5, 7, 10, 0], [0, 2, 4, 7, 9, 0], [0, 3, 5, 6, 7, 10, 0], [0, 2, 3, 4, 5, 7, 9, 10, 11, 0], [0, 2, 4, 5, 7, 8, 9, 11, 0], [0, 2, 3, 5, 7, 8, 10, 11, 0], [0, 2, 4, 5, 7, 9, 10, 11, 0]]
 
 stepsitem=[]
 index=1
 lowrange=2
 hirange=7
-notesnumber=4
+notesnumber=5
 trycheck=0
 maxrepeats=False
 prog=False
@@ -154,7 +154,7 @@ def create_app_window():
     #notes number
     global notes_number
     global notes_number_entry
-    notes_number=4
+    notes_number=5
     nn=tk.StringVar()
     nn.set(notes_number)
     notes_number_entry=tk.Entry(top, textvariable=nn,justify="right",font=("Arial",12))
@@ -825,7 +825,7 @@ def name_chord():
         if maj==True and minr==True and plusninth==False:
             plusninth=True
             minr=False
-            chordname.append(" 9+")
+            chordname.append(" #9")
             plusninth_index=len(chordname)
         elif minr==True and mincheck==False:
             chordname.append("m ")
@@ -838,7 +838,7 @@ def name_chord():
         step=chord_notes.index(chord[n])+1
         if step==6 and sus==False:
             sus=True
-            chordname.append(" Sus")
+            chordname.append(" 11")
             sus_index=len(chordname)
         if minr==True and step==7 and dim==False and fifth==False:
             dim=True
@@ -848,28 +848,28 @@ def name_chord():
                 chordname[minr_index-1]='delete'
         if dim==False and step==7 and bfive==False:
             bfive=True
-            chordname.append(" Add5b")
+            chordname.append(" #11")
             bfive_index=len(chordname)
         if step==9 and fifth==False and aug==False:
             aug=True
-            chordname.append(" Aug")
+            chordname.append(" b13")
             aug_index=len(chordname)-1
         if step==9 and fifth==True and add_fifth==False:
             add_fifth_plus=True
-            chordname.append(" Add5+")
+            chordname.append(" b13")
             add_fifth_plus_index=len(chordname)
         if step==10:
             sixth=True
-            chordname.append(" 6")
+            chordname.append(" 13")
             sixth_index=len(chordname)
         if step==11:
             seventh=True
-            chordname.append(" 7")
+            chordname.append(" b7")
             seventh_index=len(chordname)
             #print (seventh_index)
         if step==12:
             seventh_maj=True
-            chordname.append(" 7maj")
+            chordname.append(" 7")
             seventh_maj_index=len(chordname)
         if step==3 and seventh==True:
             ninth=True
@@ -879,33 +879,34 @@ def name_chord():
                 chordname[seventh_index-1]='delete'
         if step==3 and sus==False and seventh_maj==True:
             ninth_maj=True
-            chordname.append(" 9maj")
+            chordname.append(" 9")
             ninth_maj_index=len(chordname)
-            if seventh_maj_index!=999:
-                chordname[seventh_maj_index-1]='delete'
+            """if seventh_maj_index!=999:
+                True
+                chordname[seventh_maj_index-1]='delete'"""
         if step==3 and seventh_maj==False and seventh==False:
             add_ninth=True
-            chordname.append(" Add9")
+            chordname.append(" 9")
             ninth_maj_index=len(chordname)
-            if seventh_maj_index!=999:
-                chordname[seventh_maj_index-1]='delete'        
+            """if seventh_maj_index!=999:
+                chordname[seventh_maj_index-1]='delete'"""        
         if step==2:
             ninthb=True
-            chordname.append(" Add9b")
+            chordname.append(" b9")
             ninthb_index=len(chordname)
         if ninth==True and sus==True and sixth==False and(seventh==True or seventh_maj==True):
             eleventh=True
             chordname.append(" 11")
             eleventh_index=len(chordname)
             #print (eleventh_index)
-            chordname[ninth_index-1]='delete'
-            chordname[sus_index-1]='delete'
+            """chordname[ninth_index-1]='delete'
+            chordname[sus_index-1]='delete'"""
 
         if ninth==True and sus==True and sixth==True and(seventh==True or seventh_maj==True):
             thirteenth=True
             chordname.append(" 13")
             thirteenth_index=len(chordname)
-            if ninth_index!=999:
+            """if ninth_index!=999:
                 chordname[ninth_index-1]='delete'
             if sixth_index!=999:
                 chordname[sixth_index-1]='delete'
@@ -916,7 +917,7 @@ def name_chord():
                 #print (seventh_index)
                 chordname[seventh_index-1]='delete'
             if eleventh_index!=999:
-                chordname[eleventh_index-1]='delete'
+                chordname[eleventh_index-1]='delete'"""
             
 
     length=len(chordname)           
@@ -1006,7 +1007,7 @@ def helpbox():
 \n\
 The purpose of the program is to generate random chords to inspire music \
 creation. It can generate chords from 4 to 13 notes, with or without \
-Dissonances and repeated notes. All the 7 notes scales matching the chord \
+dissonances and repeated notes. All the scales matching the chord \
 notes will also be generated and displayed. You can listen to the \
 resulting chord and scales through the built-in play function.\n\
 \n\
@@ -1014,13 +1015,13 @@ resulting chord and scales through the built-in play function.\n\
 \n\
 Number of notes - This is the number of notes you want the chord to \
 contain.\n\
-Input a number from 4 to 13. The default value is 4.\n\
+Input a number from 4 to 13. The default value is 5.\n\
 \n\
 Repeated notes - Input a number from 0 to 13 to determine how many notes \
 can be repeated in the chord. The default value is 0.\n\
 \n\
 Dissonances - Input a number from 0 to 13 to tell the program how many \
-Dissonances (notes at one semitone distance) the chord should contain. The \
+dissonances (notes at one semitone distance) the chord should contain. The \
 default value is 0.\n\
 \n\
 Lowest interval - The lowest interval between notes expressed in number \
@@ -1030,11 +1031,11 @@ Highest interval - The highest interval between notes expressed in number \
 of semitones. Accepts values from 3 to 11. The default value is 7.\n\
 \n\
 If the program cannot find a chord with the parameters you have set, it \
-will try 10,000 combinations, then modify the parameters by increasing\
-the number of Dissonances and repeated notes allowed, then try 10,000 more \
+will try 10,000 combinations, then modify the parameters by increasing \
+the number of dissonances and repeated notes allowed, then try 10,000 more \
 combinations.\n\
 \n\
-- Play and Save chords, scales and history.-\n\
+- Play and Save chords, scales and history-\n\
 \n\
 The chord will be displayed in the Chord box (above the \"Chord\" label).\
 All matching scales will be displayed in the Scale combo box (above the \
@@ -1074,11 +1075,11 @@ root, on the lowest octave (the bass), the second note is the lowest note \
 of the chord,the other notes are above the lowest note, ending possibly \
 on higher octaves.\n\
 \n\
-Scales: all the 7 note scales built on the chord root containing the \
+Scales: all the scales built on the chord root containing the \
 notes of the chord.\n\
 \n\
 The text in the chord box and in the history window can be copied for use \
-in another program or for sharing through right click -.Copy, CTRL-V or \
+in another program or for sharing through right click - Copy, CTRL-V or \
 CTRL-Ins. It can also be saved to a text file through File menu - Save \
 history. File menu - Erase history to erase the history window.\n\
 \n\
