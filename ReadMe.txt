@@ -3,7 +3,7 @@ SymbolForm
 
 The purpose of the program is to generate random chords to inspire music
 creation. It can generate chords from 4 to 12 notes, with or without
-dissonances and repeated notes. All the 7 notes scales matching the chord
+dissonances and repeated notes. All the scales matching the chord
 notes will also be generated and displayed. You can listen to the
 resulting chord and scales through the built-in play function.
 
@@ -84,3 +84,4 @@ history. File menu - Erase history to erase the history window.
 New in this version:
 
 - Displays scale names
+
